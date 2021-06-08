@@ -4,6 +4,21 @@ function Form() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const {firstName, lastName, email, opinion} = event.target.elements;
+        fetch('http://localhost:4000/',{
+            method:'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify( {
+                firstName:firstName.value,
+                lastName:lastName.value,
+                email:email.value,
+                opinion:opinion.value
+            })
+        }).then(res=>{
+            console.log(res.status);
+        })
     }
     return (
         <Wrapper>
